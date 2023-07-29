@@ -1,0 +1,52 @@
+body {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  background: rgb(255, 247, 247);
+}
+
+.container {
+  margin: auto;
+  padding: 102px;
+  width: 1150px;
+  display: flex;
+  gap: 100px;
+}
+
+h1,
+h2 {
+  margin-bottom: 60px;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0em;
+  color: #000;
+}
+
+.expenses__input {
+  width: 484px;
+  height: 58px;
+  border: 1px solid #000;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.expenses__input,
+.expenses__input::placeholder {
+  color: #000;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.add__sum {
+  width: 370px;
+  height: 63px;
+  color: #fff;
+  background: #0094ff;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 10px;
+}
