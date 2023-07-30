@@ -30,6 +30,7 @@ h2 {
   border-radius: 10px;
 }
 
+.expenses,
 .expenses__input,
 .expenses__input::placeholder {
   color: #000;
@@ -49,4 +50,18 @@ h2 {
   font-weight: 400;
   line-height: normal;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+ol {
+  list-style: none;
+  counter-reset: my-awesome-counter;
+}
+ol li {
+  counter-increment: my-awesome-counter;
+}
+ol li::before {
+  content: counter(my-awesome-counter) ". ";
+  color: red;
+  font-weight: bold;
 }
