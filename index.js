@@ -1,5 +1,9 @@
 const LIMIT = 10000;
-const expenses = [];
+const CURRENCY = "руб.";
+const STATUS_IN_LIMIT = " Всё хорошо";
+const STATUS_OUT_OF_LIMIT = " Всё плохо";
+const STATUS_OUT_OF_LIMIT_CLASSNAME = "status__red";
+
 const expensesInputNode = document.getElementById("expensesInput");
 const addSumBtnNode = document.getElementById("addSumBtn");
 const expensesNode = document.getElementById("expenses");
@@ -7,7 +11,11 @@ const sumUpNode = document.getElementById("sumUp");
 const moneyLimitNode = document.getElementById("moneyLimit");
 const statusNode = document.getElementById("status");
 
-moneyLimitNode.innerText = LIMIT;
+const expenses = [];
+
+initApp(expenses);
+
+//объединяем первичные значения и базовые операции для отображения в одну функцию init/initApp
 
 addSumBtnNode.addEventListener("click", function () {
   //1. receive data from input
@@ -25,7 +33,7 @@ addSumBtnNode.addEventListener("click", function () {
   //3. render list of expenses
   let expensesListHTML = "";
   expenses.forEach((element) => {
-    expensesListHTML += `<li>${element}</li> руб.`; // сокращенная запись работы с циклом
+    expensesListHTML += `<li>${element}</li> ${CURRENCY}`; // сокращенная запись работы с циклом
   });
   // цикл forEach нужен, чтобы поработать с каждым элементом списка и что-то в нём изменить
   // - полная запись работы с элементом, но можно сократить.
@@ -34,19 +42,26 @@ addSumBtnNode.addEventListener("click", function () {
   expensesNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 
   //4. sum up and render total
+
+  //5. compare limit with total and render condition
+  if (sum <= LIMIT) {
+    statusNode.innerText = STATUS_IN_LIMIT;
+  } else {
+    statusNode.innerText = STATUS_OUT_OF_LIMIT;
+    statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
+  }
+});
+
+function initApp() {
+  moneyLimitNode.innerText = LIMIT;
+  statusNode.innerText = STATUS_IN_LIMIT;
+  sumUpNode.innerText = calculateExpenses(expenses);
+}
+
+function calculateExpenses(expenses) {
   let sum = 0;
   expenses.forEach((element) => {
     sum += element;
   });
-  //console.log(sum);
-
-  sumUpNode.innerText = sum;
-
-  //5. compare limit with total and render condition
-  if (sum <= LIMIT) {
-    statusNode.innerText = " Всё хорошо";
-  } else {
-    statusNode.innerText = " Всё плохо";
-    statusNode.classList.add("status__red");
-  }
-});
+  return sum;
+}
