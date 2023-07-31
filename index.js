@@ -1,8 +1,12 @@
+const LIMIT = 10000;
 const expenses = [];
 const expensesInputNode = document.getElementById("expensesInput");
 const addSumBtnNode = document.getElementById("addSumBtn");
 const expensesNode = document.getElementById("expenses");
 const sumUpNode = document.getElementById("sumUp");
+const moneyLimitNode = document.getElementById("moneyLimit");
+
+moneyLimitNode.innerText = LIMIT;
 
 addSumBtnNode.addEventListener("click", function () {
   //1. receive data from input
