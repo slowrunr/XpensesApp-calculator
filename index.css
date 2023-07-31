@@ -79,3 +79,10 @@ ol li::before {
 .sum__up {
   margin-bottom: 35px;
 }
+
+.status {
+  color: green;
+}
+.status__red {
+  color: red;
+}

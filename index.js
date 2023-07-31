@@ -5,6 +5,7 @@ const addSumBtnNode = document.getElementById("addSumBtn");
 const expensesNode = document.getElementById("expenses");
 const sumUpNode = document.getElementById("sumUp");
 const moneyLimitNode = document.getElementById("moneyLimit");
+const statusNode = document.getElementById("status");
 
 moneyLimitNode.innerText = LIMIT;
 
@@ -40,4 +41,12 @@ addSumBtnNode.addEventListener("click", function () {
   //console.log(sum);
 
   sumUpNode.innerText = sum;
+
+  //5. compare limit with total and render condition
+  if (sum <= LIMIT) {
+    statusNode.innerText = " Всё хорошо";
+  } else {
+    statusNode.innerText = " Всё плохо";
+    statusNode.classList.add("status__red");
+  }
 });
