@@ -1,18 +1,19 @@
+// порядок расположение констант. Сначала основные и не изменяемые
 const LIMIT = 10000;
 const CURRENCY = "руб.";
 const STATUS_IN_LIMIT = " Всё хорошо";
 const STATUS_OUT_OF_LIMIT = " Всё плохо";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status__red";
-
+// далее переменные для работы с HTML
 const expensesInputNode = document.getElementById("expensesInput");
 const addSumBtnNode = document.getElementById("addSumBtn");
 const expensesNode = document.getElementById("expenses");
 const sumUpNode = document.getElementById("sumUp");
 const moneyLimitNode = document.getElementById("moneyLimit");
 const statusNode = document.getElementById("status");
-
+// переменные с массивами
 const expenses = [];
-
+// далее указываем, что отображается в HTML через JS
 moneyLimitNode.innerText = LIMIT;
 
 addSumBtnNode.addEventListener("click", function () {
@@ -31,7 +32,7 @@ addSumBtnNode.addEventListener("click", function () {
   //3. render list of expenses
   let expensesListHTML = "";
   expenses.forEach((element) => {
-    expensesListHTML += `<li>${element}</li> руб.`; // сокращенная запись работы с циклом
+    expensesListHTML += `<li>${element} ${CURRENCY}</li>`; // сокращенная запись работы с циклом
   });
   // цикл forEach нужен, чтобы поработать с каждым элементом списка и что-то в нём изменить
   // - полная запись работы с элементом, но можно сократить.
@@ -50,9 +51,9 @@ addSumBtnNode.addEventListener("click", function () {
 
   //5. compare limit with total and render condition
   if (sum <= LIMIT) {
-    statusNode.innerText = " Всё хорошо";
+    statusNode.innerText = STATUS_IN_LIMIT;
   } else {
-    statusNode.innerText = " Всё плохо";
-    statusNode.classList.add("status__red");
+    statusNode.innerText = STATUS_OUT_OF_LIMIT;
+    statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
 });
