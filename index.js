@@ -17,55 +17,76 @@ const expenses = [];
 initApp();
 
 addSumBtnNode.addEventListener("click", function () {
-  //1. receive data from input
-  if (!expensesInputNode.value === "") {
+  const expense = getExpenseFromUser();
+  if (!expense) {
     return;
   }
 
-  const expense = parseInt(expensesInputNode.value);
-  expensesInputNode.value = "";
+  trackExpense(expense);
 
-  //2. save data
-  expenses.push(expense);
-  console.log(expenses);
-
-  //3. render list of expenses
-  let expensesListHTML = "";
-  expenses.forEach((element) => {
-    expensesListHTML += `<li>${element} ${CURRENCY}</li>`; // сокращенная запись работы с циклом
-  });
-  // цикл forEach нужен, чтобы поработать с каждым элементом списка и что-то в нём изменить
-  // - полная запись работы с элементом, но можно сократить.
-  // const elementHTML = `<li>${element}</li>;
-  //expensesListHtml += elementHTML;
-  expensesNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
-
-  //4. sum up and render total
-  let sum = 0;
-  expenses.forEach((element) => {
-    sum += element;
-  });
-  //console.log(sum);
-  sumUpNode.innerText = sum;
-  //5. compare limit with total and render condition
-  if (sum <= LIMIT) {
-    statusNode.innerText = STATUS_IN_LIMIT;
-  } else {
-    statusNode.innerText = STATUS_OUT_OF_LIMIT;
-    statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
-  }
+  renderExpenses(expenses);
+  renderSum(expenses);
+  renderStatus(expenses);
 });
 
+//+
 function initApp(expenses) {
   moneyLimitNode.innerText = LIMIT;
   statusNode.innerText = STATUS_IN_LIMIT;
   sumUpNode.innerText = calculateExpenses(expenses);
 }
 
+//+
+function getExpenseFromUser() {
+  if (!expensesInputNode.value === "") {
+    return null;
+  }
+
+  const expense = parseInt(expensesInputNode.value);
+  clearInput();
+  return expense;
+}
+
+//+
+function clearInput() {
+  expensesInputNode.value = "";
+}
+
+//+
+function trackExpense(expense) {
+  expenses.push(expense);
+}
+
+//-! + after writing line 68 uncaught error dissapeared
 function calculateExpenses() {
   let sum = 0;
   expenses.forEach((element) => {
     sum += element;
   });
   return sum;
+}
+
+//+
+function renderExpenses(expenses) {
+  let expensesListHTML = "";
+  expenses.forEach((element) => {
+    expensesListHTML += `<li>${element} ${CURRENCY}</li>`; // сокращенная запись работы с циклом
+  });
+  expensesNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
+}
+
+//+
+function renderSum(expenses) {
+  sumUpNode.innerText = calculateExpenses(expenses);
+}
+
+//+
+function renderStatus(expenses) {
+  const sum = calculateExpenses(expenses);
+  if (sum <= LIMIT) {
+    statusNode.innerText = STATUS_IN_LIMIT;
+  } else {
+    statusNode.innerText = STATUS_OUT_OF_LIMIT;
+    statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
+  }
 }
