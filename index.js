@@ -13,8 +13,8 @@ const moneyLimitNode = document.getElementById("moneyLimit");
 const statusNode = document.getElementById("status");
 // переменные с массивами
 const expenses = [];
-// далее указываем, что отображается в HTML через JS
-moneyLimitNode.innerText = LIMIT;
+// далее указываем, что отображается в HTML через JS или объединяем всё в функцию init(App)
+initApp();
 
 addSumBtnNode.addEventListener("click", function () {
   //1. receive data from input
@@ -46,9 +46,7 @@ addSumBtnNode.addEventListener("click", function () {
     sum += element;
   });
   //console.log(sum);
-
   sumUpNode.innerText = sum;
-
   //5. compare limit with total and render condition
   if (sum <= LIMIT) {
     statusNode.innerText = STATUS_IN_LIMIT;
@@ -57,3 +55,17 @@ addSumBtnNode.addEventListener("click", function () {
     statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
 });
+
+function initApp(expenses) {
+  moneyLimitNode.innerText = LIMIT;
+  statusNode.innerText = STATUS_IN_LIMIT;
+  sumUpNode.innerText = calculateExpenses(expenses);
+}
+
+function calculateExpenses() {
+  let sum = 0;
+  expenses.forEach((element) => {
+    sum += element;
+  });
+  return sum;
+}
