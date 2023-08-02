@@ -1,8 +1,8 @@
 //+
 function initApp(expenses) {
-  moneyLimitNode.innerText = LIMIT;
+  moneyLimitNode.innerText = LIMIT + ` ${CURRENCY}`;
   statusNode.innerText = STATUS_IN_LIMIT;
-  sumUpNode.innerText = calculateExpenses(expenses);
+  sumUpNode.innerText = calculateExpenses(expenses) + ` ${CURRENCY}`;
 }
 
 //+
@@ -39,7 +39,7 @@ function calculateExpenses() {
 function renderExpenses(expenses) {
   let expensesListHTML = "";
   expenses.forEach((element) => {
-    expensesListHTML += `<li>${element} ${CURRENCY}</li>`; // сокращенная запись работы с циклом
+    expensesListHTML += `<li class="expense">${element} ${CURRENCY}</li>`; // сокращенная запись работы с циклом
   });
   expensesNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 }
@@ -57,5 +57,6 @@ function renderStatus(expenses) {
   } else {
     statusNode.innerText = STATUS_OUT_OF_LIMIT;
     statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
+    moneyLimitNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
 }
