@@ -13,32 +13,40 @@
       rel="stylesheet"
     />
     <link rel="icon" href="expenses-icon.png" />
-    <title>Мои финансы</title>
+    <title>My spending diary app</title>
   </head>
   <body>
-    <div class="container">
-      <div class="input-data">
-        <h1>Учет расходов</h1>
-        <input
-          autocomplete="off"
-          id="expensesInput"
-          class="expenses__input"
-          type="number"
-          placeholder="Введите потраченную сумму"
-        />
-        <button id="addSumBtn" class="add__sum">Добавить</button>
-        <p class="money__limit">
-          Лимит: <span id="moneyLimit">10000</span> руб.
-        </p>
-        <p class="sum__up">Потрачено: <span id="sumUp"> 0</span> руб.</p>
-        <p>Cостояние:<span id="status" class="status"> Всё хорошо</span></p>
+    <h1 class="app-title">Дневник трат</h1>
+    <div class="app-container">
+      <div class="left-column">
+        <div class="input-data">
+          <input
+            autocomplete="off"
+            id="expensesInput"
+            class="expenses__input"
+            type="number"
+            placeholder="Введите потраченную сумму"
+            min="0"
+          />
+          <input class="expenses__input" placeholder="Укажите категорию" />
+
+          <button id="addSumBtn" class="add__sum">Добавить</button>
+        </div>
+
+        <div class="output-data">
+          <p>Лимит: <span class="money__limit" id="moneyLimit">10000</span></p>
+          <p>Потрачено: <span class="sum__up" id="sumUp"> 0</span></p>
+          <p>Cостояние:<span id="status" class="status"> Всё хорошо</span></p>
+        </div>
       </div>
-      <div class="output-data">
-        <h2>История:</h2>
-        <div id="expenses" class="expenses"></div>
+      <div class="right-column">
+        <div class="spending-history">
+          <h2>История расходов:</h2>
+          <div id="expenses" class="expenses"></div>
+        </div>
       </div>
     </div>
-    <script src="index.js"></script>
     <script src="functions.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
