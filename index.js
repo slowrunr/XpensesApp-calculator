@@ -1,6 +1,7 @@
 // порядок расположение констант. Сначала основные и не изменяемые
 const LIMIT = 10000;
 const CURRENCY = "\u20bd";
+//Happy Birthday my son!!!
 const STATUS_IN_LIMIT = " Всё хорошо";
 const STATUS_OUT_OF_LIMIT = " Всё плохо";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status__red";
