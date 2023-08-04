@@ -22,7 +22,7 @@ body {
 
 .input-data,
 .output-data {
-  width: 484px;
+  width: 500px;
   margin: 0 auto;
 }
 
@@ -62,9 +62,12 @@ p {
   line-height: 39px;
 }
 
-.expenses__input {
+.input-wrapper {
   margin-bottom: 28px;
+  padding: 10px 0 9px 15px;
   width: 100%;
+  display: flex;
+  align-items: center;
   height: 58px;
   border: 1px solid #000;
   background: rgba(255, 255, 255, 0.2);
@@ -73,7 +76,9 @@ p {
 
 .expense,
 .expenses__input,
+.category__input,
 .expenses__input::placeholder,
+.show__currency::after,
 .money__limit,
 ol li::before,
 .sum__up,
@@ -82,10 +87,16 @@ ol li::before,
   font-size: 32px;
   line-height: 39px;
   text-align: justify;
+  border: none;
 }
 
-.expenses__input::placeholder {
-  padding-left: 22px;
+.expenses__input {
+  width: 100%;
+}
+
+.show__currency::after {
+  padding: 0 10px 0 5px;
+  content: " \20BD";
 }
 
 .add__sum {

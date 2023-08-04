@@ -20,15 +20,20 @@
     <div class="app-container">
       <div class="left-column">
         <div class="input-data">
-          <input
-            autocomplete="off"
-            id="expensesInput"
-            class="expenses__input"
-            type="number"
-            placeholder="Введите потраченную сумму"
-            min="0"
-          />
-          <input class="expenses__input" placeholder="Укажите категорию" />
+          <div class="input-wrapper show__currency">
+            <input
+              autocomplete="off"
+              id="expensesInput"
+              class="expenses__input"
+              type="number"
+              placeholder="Введите потраченную сумму"
+              min="0"
+            />
+          </div>
+
+          <div class="input-wrapper">
+            <input class="category__input" placeholder="Укажите категорию" />
+          </div>
 
           <button id="addSumBtn" class="add__sum">Добавить</button>
         </div>
