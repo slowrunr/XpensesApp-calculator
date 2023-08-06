@@ -22,19 +22,9 @@ const calculateExpenses = () => {
   return sum;
 };
 // переменные с массивами
-const expenses = [];
+let expenses = [];
 // далее указываем, что отображается в HTML через JS или объединяем всё в функцию init(App)
 initApp();
 
-addSumBtnNode.addEventListener("click", function () {
-  const expense = getExpenseFromUser();
-  if (!expense) {
-    return;
-  }
-
-  trackExpense(expense);
-
-  renderExpenses(expenses);
-  renderSum(expenses);
-  renderStatus(expenses);
-});
+addSumBtnNode.addEventListener("click", addSumBtnHandler);
+clearHistoryBtnNode.addEventListener("click", clearHistoryBtnHandler);

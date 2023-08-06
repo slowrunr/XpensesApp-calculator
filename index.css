@@ -79,6 +79,7 @@ p {
 }
 
 .expense,
+.category__input,
 .expenses__input,
 .category__input,
 .expenses__input::placeholder,
@@ -94,6 +95,7 @@ ol li::before,
   border: none;
 }
 
+.category__input,
 .expenses__input {
   width: 100%;
 }

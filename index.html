@@ -32,7 +32,25 @@
           </div>
 
           <div class="input-wrapper">
-            <input class="category__input" placeholder="Укажите категорию" />
+            <select
+              id="categoryInput"
+              class="category__input"
+              placeholder="Укажите категорию"
+            >
+              <option
+                hidden=""
+                disabled=""
+                selected=""
+                value="Укажите категорию"
+              >
+                Укажите категорию
+              </option>
+              <option value="Продукты">Продукты</option>
+              <option value="Кафе и рестораны">Кафе и рестораны</option>
+              <option value="Аптека">Аптека</option>
+              <option value="Транспорт">Транспорт</option>
+              <option value="Развлечения">Развлечения</option>
+            </select>
           </div>
 
           <button id="addSumBtn" class="add__sum">Добавить</button>

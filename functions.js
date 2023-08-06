@@ -64,3 +64,23 @@ function renderStatus(expenses) {
     moneyLimitNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
 }
+
+function addSumBtnHandler() {
+  const expense = getExpenseFromUser();
+  if (!expense) {
+    return;
+  }
+
+  trackExpense(expense);
+  //console.log(expense);
+
+  renderExpenses(expenses);
+  renderSum(expenses);
+  renderStatus(expenses);
+}
+
+//+
+function clearHistoryBtnHandler() {
+  expenses = [];
+  renderExpenses(expenses);
+}
