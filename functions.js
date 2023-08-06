@@ -11,7 +11,8 @@ function getExpenseFromUser() {
     return null;
   }
 
-  const expense = parseInt(expensesInputNode.value);
+  const expense = parseFloat(expensesInputNode.value);
+  //replaced parseInt -> parseFloat
   clearInput();
   return expense;
 }
@@ -26,14 +27,15 @@ function trackExpense(expense) {
   expenses.push(expense);
 }
 
+// перенес в index.js в виде const
 //-! + after writing line 68 uncaught error dissapeared
-function calculateExpenses() {
-  let sum = 0;
-  expenses.forEach((element) => {
-    sum += element;
-  });
-  return sum;
-}
+//function calculateExpenses() {
+//  let sum = 0;
+//  expenses.forEach((element) => {
+//    sum += element;
+//  });
+//  return sum;
+//}
 
 //+
 function renderExpenses(expenses) {
@@ -55,8 +57,30 @@ function renderStatus(expenses) {
   if (sum <= LIMIT) {
     statusNode.innerText = STATUS_IN_LIMIT;
   } else {
-    statusNode.innerText = STATUS_OUT_OF_LIMIT;
+    statusNode.innerText = `${STATUS_OUT_OF_LIMIT} (${
+      LIMIT - sum
+    } ${CURRENCY})`;
     statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
     moneyLimitNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
+}
+
+function addSumBtnHandler() {
+  const expense = getExpenseFromUser();
+  if (!expense) {
+    return;
+  }
+
+  trackExpense(expense);
+  //console.log(expense);
+
+  renderExpenses(expenses);
+  renderSum(expenses);
+  renderStatus(expenses);
+}
+
+//+
+function clearHistoryBtnHandler() {
+  expenses = [];
+  renderExpenses(expenses);
 }

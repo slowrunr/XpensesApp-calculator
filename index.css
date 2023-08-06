@@ -26,6 +26,10 @@ body {
   margin: 0 auto;
 }
 
+.output-data {
+  margin-bottom: 28px;
+}
+
 .spending-history {
   width: 370px;
 }
@@ -75,6 +79,7 @@ p {
 }
 
 .expense,
+.category__input,
 .expenses__input,
 .category__input,
 .expenses__input::placeholder,
@@ -90,6 +95,7 @@ ol li::before,
   border: none;
 }
 
+.category__input,
 .expenses__input {
   width: 100%;
 }
@@ -99,18 +105,23 @@ ol li::before,
   content: " \20BD";
 }
 
-.add__sum {
-  margin-bottom: 60px;
+button {
   width: 100%;
   height: 63px;
   color: #fff;
-  background: #0094ff;
   font-size: 32px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  line-height: 39px;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.add__sum {
+  margin-bottom: 60px;
+  background: #0094ff;
+}
+
+.clear__history {
+  background: #ff0000;
 }
 
 ol {
