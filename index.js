@@ -8,10 +8,19 @@ const STATUS_OUT_OF_LIMIT_CLASSNAME = "status__red";
 // далее переменные для работы с HTML
 const expensesInputNode = document.getElementById("expensesInput");
 const addSumBtnNode = document.getElementById("addSumBtn");
+const clearHistoryBtnNode = document.getElementById("clearHistoryBtn");
 const expensesNode = document.getElementById("expenses");
 const sumUpNode = document.getElementById("sumUp");
 const moneyLimitNode = document.getElementById("moneyLimit");
 const statusNode = document.getElementById("status");
+// вместо строчки function calculateExpenses() =
+const calculateExpenses = () => {
+  let sum = 0;
+  expenses.forEach((element) => {
+    sum += element;
+  });
+  return sum;
+};
 // переменные с массивами
 const expenses = [];
 // далее указываем, что отображается в HTML через JS или объединяем всё в функцию init(App)
