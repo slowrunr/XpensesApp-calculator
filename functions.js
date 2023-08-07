@@ -67,11 +67,7 @@ function renderStatus(expenses) {
 
 //?
 function getCategoryFromUser() {
-  const expenseCategory = categoryInput.value;
-  if (expenseCategory === "Укажите категорию") {
-    return;
-  }
-  return expenseCategory;
+  return expenseCategoryNode.value;
 }
 
 function addSumBtnHandler() {
@@ -79,11 +75,14 @@ function addSumBtnHandler() {
   if (!expense) {
     return;
   }
-  const addCategory = getCategoryFromUser();
+  const newCategory = getCategoryFromUser();
+  if (newCategory === "Укажите категорию") {
+    return;
+  }
 
-  const newExpense = { amount: expense, category: addCategory };
+  const newExpense = { amount: expense, category: newCategory };
   trackExpense(newExpense);
-  //console.log(expense);
+  console.log(newExpense);
 
   renderExpenses(expenses);
   renderSum(expenses);
