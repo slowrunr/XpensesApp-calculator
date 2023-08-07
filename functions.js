@@ -23,8 +23,8 @@ function clearInput() {
 }
 
 //+
-function trackExpense(expense) {
-  expenses.push(expense);
+function trackExpense(newExpense) {
+  expenses.push(newExpense);
 }
 
 // перенес в index.js в виде const
@@ -65,13 +65,24 @@ function renderStatus(expenses) {
   }
 }
 
+//?
+function getCategoryFromUser() {
+  const expenseCategory = categoryInput.value;
+  if (expenseCategory === "Укажите категорию") {
+    return;
+  }
+  return expenseCategory;
+}
+
 function addSumBtnHandler() {
   const expense = getExpenseFromUser();
   if (!expense) {
     return;
   }
+  const addCategory = getCategoryFromUser();
 
-  trackExpense(expense);
+  const newExpense = { amount: expense, category: addCategory };
+  trackExpense(newExpense);
   //console.log(expense);
 
   renderExpenses(expenses);
