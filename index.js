@@ -10,6 +10,7 @@ const expensesInputNode = document.getElementById("expensesInput");
 const addSumBtnNode = document.getElementById("addSumBtn");
 const clearHistoryBtnNode = document.getElementById("clearHistoryBtn");
 const expensesNode = document.getElementById("expenses");
+const expenseCategoryNode = document.getElementById("categoryInput");
 const sumUpNode = document.getElementById("sumUp");
 const moneyLimitNode = document.getElementById("moneyLimit");
 const statusNode = document.getElementById("status");
