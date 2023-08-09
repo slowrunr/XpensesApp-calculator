@@ -120,8 +120,18 @@ button {
   background: #0094ff;
 }
 
+.add__sum:hover {
+  color: #0094ff;
+  background: #fff;
+}
+
 .clear__history {
   background: #ff0000;
+}
+
+.clear__history:hover {
+  color: #ff0000;
+  background: #fff;
 }
 
 ol {
