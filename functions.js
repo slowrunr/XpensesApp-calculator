@@ -40,8 +40,11 @@ function trackExpense(newExpense) {
 //+
 function renderExpenses(expenses) {
   let expensesListHTML = "";
-  expenses.forEach((element) => {
-    expensesListHTML += `<li class="expense">${element} ${CURRENCY}</li>`; // сокращенная запись работы с циклом
+  expenses.forEach((expense) => {
+    const spendingDiaryEntry = document.createElement("li");
+    spendingDiaryEntry.innerText = `${expense.amount} - ${expense.category} ${CURRENCY}`;
+    //(expensesListHTML += `<li class="expense">${expenses} - ${newCategory} ${CURRENCY}</li>`); // сокращенная запись работы с циклом
+    expensesListHTML.appendChild(spendingDiaryEntry);
   });
   expensesNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 }
@@ -80,13 +83,30 @@ function addSumBtnHandler() {
     return;
   }
 
-  const newExpense = { amount: expense, category: newCategory };
-  trackExpense(newExpense);
-  console.log(newExpense);
+  trackExpense(expenses);
+  console.log(expenses);
 
   renderExpenses(expenses);
   renderSum(expenses);
   renderStatus(expenses);
+}
+
+//+
+function renderExpenses(expenses) {
+  let expensesListHTML = "";
+  const expense = getExpenseFromUser();
+  if (!expense) {
+    return;
+  }
+  const newCategory = getCategoryFromUser();
+  if (newCategory === "Укажите категорию") {
+    return;
+  }
+  const newExpense = `${expense} ${CURRENCY} - ${newCategory}`;
+  expenses.forEach((element) => {
+    expensesListHTML += `<li class="expense">${newExpense}</li>`; // сокращенная запись работы с циклом
+  });
+  expensesNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 }
 
 //+

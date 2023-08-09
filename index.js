@@ -21,8 +21,8 @@ let expenses = [];
 // вместо строчки function calculateExpenses() =
 const calculateExpenses = () => {
   let sum = 0;
-  expenses.forEach((element) => {
-    sum += element;
+  expenses.forEach((expense) => {
+    sum += expense.amount;
   });
   return sum;
 };
