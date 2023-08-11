@@ -83,12 +83,12 @@ function addSumBtnHandler() {
     return;
   }
 
-  trackExpense(expenses);
-  console.log(expenses);
+  const newExpense = { amount: expense, category: newCategory };
+  console.log(newExpense);
 
+  expenses.push(newExpense);
   renderExpenses(expenses);
-  renderSum(expenses);
-  renderStatus(expenses);
+  clearInput(inputNode);
 }
 
 //+
