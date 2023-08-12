@@ -21,7 +21,7 @@
     <div class="app-container">
       <div class="left-column">
         <div class="input-data">
-          <div class="input-wrapper show__currency">
+          <div id="inputWrapper" class="input-wrapper show__currency">
             <input
               autocomplete="off"
               id="expensesInput"
@@ -32,25 +32,10 @@
             />
           </div>
 
-          <div class="input-wrapper">
-            <select
-              id="categoryInput"
-              class="/"
-              placeholder="Укажите категорию"
-            >
-              <option hidden disabled selected value="Укажите категорию">
-                Укажите категорию
-              </option>
-              <option value="Продукты">Продукты</option>
-              <option value="Кафе и рестораны">Кафе и рестораны</option>
-              <option value="Аптека">Аптека</option>
-              <option value="Транспорт">Транспорт</option>
-              <option value="Развлечения">Развлечения</option>
-            </select>
-          </div>
-
           <div class="dropdown">
             <input
+              autocomplete="off"
+              type="text"
               id="categoryInput"
               class="category__input"
               placeholder="Укажите категорию"
@@ -105,11 +90,11 @@
           <p>Лимит: <span class="money__limit" id="moneyLimit">10000</span></p>
           <p>Потрачено: <span class="sum__up" id="sumUp"> 0</span></p>
           <p>Cостояние:<span id="status" class="status"> Всё хорошо</span></p>
-        </div>
 
-        <button id="clearHistoryBtn" class="clear__history">
-          Очистить историю расходов
-        </button>
+          <button id="clearHistoryBtn" class="clear__history">
+            Очистить историю расходов
+          </button>
+        </div>
       </div>
       <div class="right-column">
         <div class="spending-history">

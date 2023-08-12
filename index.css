@@ -17,7 +17,12 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 28px;
+  gap: 30px;
+}
+
+.left-column,
+.right-column {
+  width: calc(50% - 15px);
 }
 
 .input-data,
@@ -28,10 +33,6 @@ body {
 
 .output-data {
   margin-bottom: 28px;
-}
-
-.spending-history {
-  width: 370px;
 }
 
 .spending-history h2 {
@@ -74,7 +75,7 @@ p {
   align-items: center;
   height: 58px;
   border: 1px solid #000;
-  background: rgba(255, 255, 255, 0.2);
+  background: #fff;
   border-radius: 10px;
 }
 .option,
@@ -117,7 +118,7 @@ button {
 }
 
 .add__sum {
-  margin-bottom: 60px;
+  margin-bottom: 28px;
   background: #0094ff;
 }
 
@@ -157,4 +158,9 @@ ol li::before {
 .status__red {
   font-weight: 700;
   color: red;
+}
+
+.status__border-red {
+  border: 1.7px double red;
+  border-radius: 10px;
 }
