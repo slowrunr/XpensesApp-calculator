@@ -59,6 +59,8 @@ function addSumBtnHandler() {
   expenses.push(newExpense);
   renderExpenses(expenses);
   clearInput();
+  renderSum();
+  renderStatus();
 }
 
 //+
@@ -106,15 +108,11 @@ function trackExpense(newExpense) {
 
 //+
 function renderExpenses(expenses) {
-  expensesNode.innerHTML = "";
-
-  expenses.forEach((expense) => {
-    const spendingDiaryEntry = document.createElement("li");
-
-    spendingDiaryEntry.innerText = `${expense.category} - ${expense.amount} ${CURRENCY}`;
-
-    expensesNode.appendChild(spendingDiaryEntry);
+  let expensesListHTML = "";
+  expenses.forEach((newExpense) => {
+    expensesListHTML += `<li class="expense"> ${newExpense.category} - ${newExpense.amount} ${CURRENCY}</li>`; // сокращенная запись работы с циклом
   });
+  expensesNode.innerHTML = `${expensesListHTML}`;
 }
 
 //+
@@ -123,8 +121,8 @@ function renderSum(expenses) {
 }
 
 //+
-function renderStatus(expenses) {
-  const sum = calculateExpenses(expenses);
+function renderStatus() {
+  const sum = calculateExpenses();
   if (sum <= LIMIT) {
     statusNode.innerText = STATUS_IN_LIMIT;
   } else {
