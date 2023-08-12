@@ -135,6 +135,13 @@ function renderStatus() {
 }
 
 //+
+function show(a) {
+  document.querySelector(".category__input").value = a;
+}
+let dropdown = document.querySelector(".dropdown");
+dropdown.onclick = function () {
+  dropdown.classList.toggle("active");
+};
 // function renderExpenses(expenses) {
 //   expensesListHTML = "";
 

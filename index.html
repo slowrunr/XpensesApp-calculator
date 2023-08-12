@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="dropdown-menu.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,7 +35,7 @@
           <div class="input-wrapper">
             <select
               id="categoryInput"
-              class="category__input"
+              class="/"
               placeholder="Укажите категорию"
             >
               <option hidden disabled selected value="Укажите категорию">
@@ -46,6 +47,55 @@
               <option value="Транспорт">Транспорт</option>
               <option value="Развлечения">Развлечения</option>
             </select>
+          </div>
+
+          <div class="dropdown">
+            <input
+              id="categoryInput"
+              class="category__input"
+              placeholder="Укажите категорию"
+              readonly
+            />
+            <ul class="option">
+              <li
+                class="option__item"
+                onclick="show('Продукты')"
+                value="Продукты"
+              >
+                Продукты
+              </li>
+              <li
+                class="option__item"
+                onclick="show('Транспорт')"
+                value="Транспорт"
+              >
+                Транспорт
+              </li>
+              <li
+                class="option__item"
+                onclick="show('Кафе и рестораны')"
+                value="Кафе и рестораны"
+              >
+                Кафе и рестораны
+              </li>
+              <li
+                class="option__item"
+                onclick="show('Покупки в интернете')"
+                value="Покупки в интернете"
+              >
+                Покупки в интернете
+              </li>
+              <li
+                class="option__item"
+                onclick="show('Развлечения')"
+                value="Развлечения"
+              >
+                Развлечения
+              </li>
+              <li class="option__item" onclick="show('Аптека')" value="Аптека">
+                Аптека
+              </li>
+            </ul>
           </div>
 
           <button id="addSumBtn" class="add__sum">Добавить</button>
