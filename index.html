@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="dropdown-menu.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,7 +21,7 @@
     <div class="app-container">
       <div class="left-column">
         <div class="input-data">
-          <div class="input-wrapper show__currency">
+          <div id="inputWrapper" class="input-wrapper show__currency">
             <input
               autocomplete="off"
               id="expensesInput"
@@ -31,21 +32,55 @@
             />
           </div>
 
-          <div class="input-wrapper">
-            <select
+          <div class="dropdown">
+            <input
+              autocomplete="off"
+              type="text"
               id="categoryInput"
               class="category__input"
               placeholder="Укажите категорию"
-            >
-              <option hidden disabled selected value="Укажите категорию">
-                Укажите категорию
-              </option>
-              <option value="Продукты">Продукты</option>
-              <option value="Кафе и рестораны">Кафе и рестораны</option>
-              <option value="Аптека">Аптека</option>
-              <option value="Транспорт">Транспорт</option>
-              <option value="Развлечения">Развлечения</option>
-            </select>
+              readonly
+            />
+            <ul class="option">
+              <li
+                class="option__item"
+                onclick="show('Продукты')"
+                value="Продукты"
+              >
+                Продукты
+              </li>
+              <li
+                class="option__item"
+                onclick="show('Транспорт')"
+                value="Транспорт"
+              >
+                Транспорт
+              </li>
+              <li
+                class="option__item"
+                onclick="show('Кафе и рестораны')"
+                value="Кафе и рестораны"
+              >
+                Кафе и рестораны
+              </li>
+              <li
+                class="option__item"
+                onclick="show('Покупки в интернете')"
+                value="Покупки в интернете"
+              >
+                Покупки в интернете
+              </li>
+              <li
+                class="option__item"
+                onclick="show('Развлечения')"
+                value="Развлечения"
+              >
+                Развлечения
+              </li>
+              <li class="option__item" onclick="show('Аптека')" value="Аптека">
+                Аптека
+              </li>
+            </ul>
           </div>
 
           <button id="addSumBtn" class="add__sum">Добавить</button>
@@ -55,11 +90,11 @@
           <p>Лимит: <span class="money__limit" id="moneyLimit">10000</span></p>
           <p>Потрачено: <span class="sum__up" id="sumUp"> 0</span></p>
           <p>Cостояние:<span id="status" class="status"> Всё хорошо</span></p>
-        </div>
 
-        <button id="clearHistoryBtn" class="clear__history">
-          Очистить историю расходов
-        </button>
+          <button id="clearHistoryBtn" class="clear__history">
+            Очистить историю расходов
+          </button>
+        </div>
       </div>
       <div class="right-column">
         <div class="spending-history">

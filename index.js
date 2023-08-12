@@ -5,9 +5,11 @@ const CURRENCY = "\u20bd";
 const STATUS_IN_LIMIT = " Всё хорошо";
 const STATUS_OUT_OF_LIMIT = " Всё плохо";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status__red";
+const STATUS_OUT_OF_DATA_CLASSNAME = "status__border-red";
 
 // далее переменные для работы с HTML
 const expensesInputNode = document.getElementById("expensesInput");
+const inputWrapperNode = document.getElementById("inputWrapper");
 const addSumBtnNode = document.getElementById("addSumBtn");
 const clearHistoryBtnNode = document.getElementById("clearHistoryBtn");
 const expensesNode = document.getElementById("expenses");
@@ -46,12 +48,17 @@ function initApp(expenses) {
 function addSumBtnHandler() {
   const expense = getExpenseFromUser();
   if (!expense) {
+    inputWrapperNode.classList.add(STATUS_OUT_OF_DATA_CLASSNAME);
     return;
   }
+  inputWrapperNode.classList.remove(STATUS_OUT_OF_DATA_CLASSNAME);
+
   const newCategory = getCategoryFromUser();
-  if (newCategory === "Укажите категорию") {
+  if (!newCategory) {
+    expenseCategoryNode.classList.add(STATUS_OUT_OF_DATA_CLASSNAME);
     return;
   }
+  expenseCategoryNode.classList.remove(STATUS_OUT_OF_DATA_CLASSNAME);
 
   const newExpense = { amount: expense, category: newCategory };
   console.log(newExpense);
@@ -72,12 +79,12 @@ function clearHistoryBtnHandler() {
 //+
 function getExpenseFromUser() {
   if (!expensesInputNode.value === "") {
-    return null;
+    return;
   }
 
   const expense = parseInt(expensesInputNode.value);
   // для работы с дробными числами можно заменить parseInt -> parseFloat
-  clearInput();
+  clearInput;
   return expense;
 }
 // 2-й вариант записи этой функции:
@@ -92,7 +99,9 @@ function getCategoryFromUser() {
 //+
 function clearInput() {
   expensesInputNode.value = "";
+  expenseCategoryNode.value = "";
 }
+
 // другой вариант записи функции с использованием стрелочной функции:
 /* const clearInput() = (input) => {
   expensesInputNode.value = "";
@@ -135,6 +144,13 @@ function renderStatus() {
 }
 
 //+
+function show(a) {
+  document.querySelector(".category__input").value = a;
+}
+let dropdown = document.querySelector(".dropdown");
+dropdown.onclick = function () {
+  dropdown.classList.toggle("active");
+};
 // function renderExpenses(expenses) {
 //   expensesListHTML = "";
 
