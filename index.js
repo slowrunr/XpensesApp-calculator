@@ -1,17 +1,18 @@
 // порядок расположение констант. Сначала основные и не изменяемые (строковые константы - string)
-let LIMIT = 10000;
-let currentLimit = LIMIT;
+const DEFAULT_LIMIT = 10000;
 const CURRENCY = "\u20bd";
 const STATUS_IN_LIMIT = " Всё хорошо";
 const STATUS_OUT_OF_LIMIT = " Всё плохо";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status__red";
 const STATUS_OUT_OF_DATA_CLASSNAME = "status__border-red";
+const REVISE_MONEY_LIMIT_TEXT = "Задайте новый лимит";
 
 // далее переменные для работы с HTML
 const expensesInputNode = document.getElementById("expensesInput");
 const inputWrapperNode = document.getElementById("inputWrapper");
 const addSumBtnNode = document.getElementById("addSumBtn");
 const clearHistoryBtnNode = document.getElementById("clearHistoryBtn");
+const reviseLimitBtnNode = document.getElementById("reviseLimitBtn");
 const expensesNode = document.getElementById("expenses");
 const expenseCategoryNode = document.getElementById("categoryInput");
 const sumUpNode = document.getElementById("sumUp");
@@ -19,6 +20,7 @@ const statusNode = document.getElementById("status");
 // получаем лимит из этой переменной
 const moneyLimitNode = document.getElementById("moneyLimit");
 // переменные с массивами
+let LIMIT = moneyLimitNode.innerText;
 let expenses = [];
 
 // вместо строчки function calculateExpenses() =
@@ -35,11 +37,13 @@ initApp();
 
 // привязка функций-обработчиков к кнопкам
 addSumBtnNode.addEventListener("click", addSumBtnHandler);
+reviseLimitBtnNode.addEventListener("click", reviseLimitHandler);
+moneyLimitNode.addEventListener("click", reviseLimitHandler);
 clearHistoryBtnNode.addEventListener("click", clearHistoryBtnHandler);
 
 //+
 function initApp(expenses) {
-  moneyLimitNode.innerText = LIMIT + ` ${CURRENCY}`;
+  moneyLimitNode.innerText = DEFAULT_LIMIT + ` ${CURRENCY}`;
   statusNode.innerText = STATUS_IN_LIMIT;
   sumUpNode.innerText = calculateExpenses(expenses) + ` ${CURRENCY}`;
 }
@@ -129,6 +133,17 @@ function renderSum(expenses) {
   sumUpNode.innerText = calculateExpenses(expenses);
 }
 
+// функция изменения лимита средств
+function reviseLimitHandler() {
+  const newLimit = prompt(REVISE_MONEY_LIMIT_TEXT);
+  const newLimitValue = parseInt(newLimit);
+  if (!newLimitValue) {
+    return;
+  }
+  moneyLimitNode.innerText = newLimitValue + ` ${CURRENCY}`;
+  LIMIT = newLimitValue;
+}
+
 //+
 function renderStatus() {
   const sum = calculateExpenses();
@@ -143,7 +158,7 @@ function renderStatus() {
   }
 }
 
-//+
+//+ функция выбора пункта из выпадающего меню
 function show(a) {
   document.querySelector(".category__input").value = a;
 }
@@ -151,24 +166,5 @@ let dropdown = document.querySelector(".dropdown");
 dropdown.onclick = function () {
   dropdown.classList.toggle("active");
 };
-// function renderExpenses(expenses) {
-//   expensesListHTML = "";
-
-//   expenses.forEach((newExpense) => {
-//     expensesListHTML += `<li class="expense">${newExpense}</li>`; // сокращенная запись работы с циклом
-//     newExpense.innerText = `${expense} - ${newCategory}`;
-//   });
-//   expensesNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
-// }
-
-// перенес в index.js в виде const
-//-! + after writing line 68 uncaught error dissapeared
-//function calculateExpenses() {
-//  let sum = 0;
-//  expenses.forEach((element) => {
-//    sum += element;
-//  });
-//  return sum;
-//}
 
 //08.2023//Happy Birthday my son!!!//
