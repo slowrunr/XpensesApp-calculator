@@ -199,3 +199,23 @@ function renderExpenses() {
 
   expensesNode.innerHTML = expensesHTML;
 }
+
+// function renderExpenses(expenses) {
+//   expensesListHTML = "";
+
+//   expenses.forEach((newExpense) => {
+//     expensesListHTML += `<li class="expense">${newExpense}</li>`; // сокращенная запись работы с циклом
+//     newExpense.innerText = `${expense} - ${newCategory}`;
+//   });
+//   expensesNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
+// }
+
+// перенес в index.js в виде const
+//-! + after writing line 68 uncaught error dissapeared
+//function calculateExpenses() {
+//  let sum = 0;
+//  expenses.forEach((element) => {
+//    sum += element;
+//  });
+//  return sum;
+//}

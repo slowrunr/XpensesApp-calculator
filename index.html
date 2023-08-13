@@ -87,8 +87,17 @@
         </div>
 
         <div class="output-data">
-          <p>Лимит: <span class="money__limit" id="moneyLimit">10000</span></p>
-          <p>Потрачено: <span class="sum__up" id="sumUp"> 0</span></p>
+          <div class="money__limit-box">
+            <p>Лимит: <span id="moneyLimit" class="money__limit"></span></p>
+            <img
+              id="reviseLimitBtn"
+              class="revise__limit"
+              src="/change-limit-icon.png"
+              alt="Кнопка вызова функции смены лимита в виде векторного изображения листа с карандашом"
+            />
+          </div>
+
+          <p>Потрачено: <span id="sumUp" class="sum__up"> 0</span></p>
           <p>Cостояние:<span id="status" class="status"> Всё хорошо</span></p>
 
           <button id="clearHistoryBtn" class="clear__history">
