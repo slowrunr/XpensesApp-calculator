@@ -43,7 +43,7 @@ clearHistoryBtnNode.addEventListener("click", clearHistoryBtnHandler);
 
 //+
 function initApp(expenses) {
-  moneyLimitNode.innerText = DEFAULT_LIMIT + ` ${CURRENCY}`;
+  moneyLimitNode.innerText = parseInt(DEFAULT_LIMIT) + ` ${CURRENCY}`;
   statusNode.innerText = STATUS_IN_LIMIT;
   sumUpNode.innerText = calculateExpenses(expenses) + ` ${CURRENCY}`;
 }
@@ -133,14 +133,14 @@ function renderSum(expenses) {
   sumUpNode.innerText = calculateExpenses(expenses);
 }
 
-// функция изменения лимита средств
+//функция изменения лимита средств
 function reviseLimitHandler() {
   const newLimit = prompt(REVISE_MONEY_LIMIT_TEXT);
   const newLimitValue = parseInt(newLimit);
   if (!newLimitValue) {
     return;
   }
-  moneyLimitNode.innerText = newLimitValue + ` ${CURRENCY}`;
+  moneyLimitNode.innerText = newLimitValue;
   LIMIT = newLimitValue;
 }
 
