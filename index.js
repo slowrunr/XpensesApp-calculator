@@ -63,18 +63,14 @@ function addSumBtnHandler() {
   console.log(newExpense);
 
   expenses.push(newExpense);
-  renderExpenses(expenses);
+  render();
   clearInput();
-  renderSum();
-  renderStatus();
 }
 
 function render() {
-  const sum = calculateExpenses();
-
-  renderExpenses();
-  renderSum(sum);
-  renderStatus(sum);
+  renderExpenses(expenses);
+  renderSum();
+  renderStatus();
 }
 
 //+
