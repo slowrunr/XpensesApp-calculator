@@ -69,6 +69,14 @@ function addSumBtnHandler() {
   renderStatus();
 }
 
+function render() {
+  const sum = calculateExpenses();
+
+  renderExpenses();
+  renderSum(sum);
+  renderStatus(sum);
+}
+
 //+
 function clearHistoryBtnHandler() {
   expenses = [];
@@ -139,6 +147,7 @@ function reviseLimitHandler() {
   }
   moneyLimitNode.innerText = newLimitValue;
   currentLimit = newLimitValue;
+  renderStatus();
 }
 
 //+
@@ -155,8 +164,8 @@ function addStatusRed() {
 
 //+
 function renderStatus() {
-  removeStatusRed();
   const sum = calculateExpenses();
+  removeStatusRed();
   if (sum <= currentLimit) {
     statusNode.innerText = STATUS_IN_LIMIT;
   } else {
