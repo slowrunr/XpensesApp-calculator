@@ -1,5 +1,6 @@
 // порядок расположение констант. Сначала основные и не изменяемые (строковые константы - string)
 const DEFAULT_LIMIT = 10000;
+const DEFAULT_SUM = 0;
 const CURRENCY = "\u20bd";
 const STATUS_IN_LIMIT = " Всё хорошо";
 const STATUS_OUT_OF_LIMIT = " Всё плохо";
@@ -20,7 +21,7 @@ const statusNode = document.getElementById("status");
 // получаем лимит из этой переменной
 const moneyLimitNode = document.getElementById("moneyLimit");
 // переменные с массивами
-let LIMIT = moneyLimitNode.innerText;
+let currentLimit = DEFAULT_LIMIT;
 let expenses = [];
 
 // вместо строчки function calculateExpenses() =
@@ -35,15 +36,9 @@ const calculateExpenses = () => {
 // далее указываем, что отображается в HTML через JS и объединяем всё в функцию init(App)
 initApp();
 
-// привязка функций-обработчиков к кнопкам
-addSumBtnNode.addEventListener("click", addSumBtnHandler);
-reviseLimitBtnNode.addEventListener("click", reviseLimitHandler);
-moneyLimitNode.addEventListener("click", reviseLimitHandler);
-clearHistoryBtnNode.addEventListener("click", clearHistoryBtnHandler);
-
 //+
 function initApp(expenses) {
-  moneyLimitNode.innerText = parseInt(DEFAULT_LIMIT) + ` ${CURRENCY}`;
+  moneyLimitNode.innerText = currentLimit + ` ${CURRENCY}`;
   statusNode.innerText = STATUS_IN_LIMIT;
   sumUpNode.innerText = calculateExpenses(expenses) + ` ${CURRENCY}`;
 }
@@ -78,6 +73,8 @@ function addSumBtnHandler() {
 function clearHistoryBtnHandler() {
   expenses = [];
   renderExpenses(expenses);
+  sumUpNode.innerText = DEFAULT_SUM + ` ${CURRENCY}`;
+  renderStatus();
 }
 
 //+
@@ -130,7 +127,7 @@ function renderExpenses(expenses) {
 
 //+
 function renderSum(expenses) {
-  sumUpNode.innerText = calculateExpenses(expenses);
+  sumUpNode.innerText = calculateExpenses(expenses) + ` ${CURRENCY}`;
 }
 
 //функция изменения лимита средств
@@ -141,20 +138,32 @@ function reviseLimitHandler() {
     return;
   }
   moneyLimitNode.innerText = newLimitValue;
-  LIMIT = newLimitValue;
+  currentLimit = newLimitValue;
+}
+
+//+
+function removeStatusRed() {
+  statusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
+  moneyLimitNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
+}
+
+//+
+function addStatusRed() {
+  statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
+  moneyLimitNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
 }
 
 //+
 function renderStatus() {
+  removeStatusRed();
   const sum = calculateExpenses();
-  if (sum <= LIMIT) {
+  if (sum <= currentLimit) {
     statusNode.innerText = STATUS_IN_LIMIT;
   } else {
     statusNode.innerText = `${STATUS_OUT_OF_LIMIT} (${
-      LIMIT - sum
+      currentLimit - sum
     } ${CURRENCY})`;
-    statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
-    moneyLimitNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
+    addStatusRed();
   }
 }
 
@@ -166,5 +175,11 @@ let dropdown = document.querySelector(".dropdown");
 dropdown.onclick = function () {
   dropdown.classList.toggle("active");
 };
+
+// привязка функций-обработчиков к кнопкам
+addSumBtnNode.addEventListener("click", addSumBtnHandler);
+reviseLimitBtnNode.addEventListener("click", reviseLimitHandler);
+moneyLimitNode.addEventListener("click", reviseLimitHandler);
+clearHistoryBtnNode.addEventListener("click", clearHistoryBtnHandler);
 
 //08.2023//Happy Birthday my son!!!//
