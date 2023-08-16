@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="dropdown-menu.css" />
+    <link rel="stylesheet" href="popup.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -86,13 +87,32 @@
           <button id="addSumBtn" class="add__sum">Добавить</button>
         </div>
 
+        <div id="revise__limit-popup" class="popup">
+          <form id="popupBox" class="popup-box">
+            <h2 class="popup-title">Новый лимит</h2>
+            <div class="popup-flex">
+              <div class="popup-input-wrapper tl">
+                <input
+                  type="number"
+                  class="popup-input js-popup-input"
+                  placeholder="Введите новый лимит"
+                />
+              </div>
+              <button class="popup-submit js-popup-submit" type="submit">
+                <p class="popup-submit__text">Задать лимит</p>
+              </button>
+              <button id="closePopupBtn" class="close-popup"></button>
+            </div>
+          </form>
+        </div>
+
         <div class="output-data">
           <div class="money__limit-box">
             <p>Лимит: <span id="moneyLimit" class="money__limit"></span></p>
             <img
               id="reviseLimitBtn"
               class="revise__limit"
-              src="icons/change-limit-icon.png"
+              src="icons/revise-limit-icon.png"
               alt="Кнопка вызова функции смены лимита в виде векторного изображения листа с карандашом"
             />
           </div>
@@ -113,5 +133,6 @@
       </div>
     </div>
     <script src="index.js"></script>
+    <script src="popup.js"></script>
   </body>
 </html>

@@ -18,10 +18,20 @@ const expensesNode = document.getElementById("expenses");
 const expenseCategoryNode = document.getElementById("categoryInput");
 const sumUpNode = document.getElementById("sumUp");
 const statusNode = document.getElementById("status");
+
 // получаем лимит из этой переменной
 const moneyLimitNode = document.getElementById("moneyLimit");
-// переменные с массивами
 let currentLimit = DEFAULT_LIMIT;
+
+// function getLimitFromStorage() {
+//   const limitFromStorage = parseInt(localStorage.getItem("currentLimit"));
+//   if (!limitFromStorage) {
+//     currentLimit = DEFAULT_LIMIT;
+//   }
+//   moneyLimitNode.innerText = localStorage.getItem("currentLimit");
+// }
+
+// переменные с массивами
 let expenses = [];
 
 // вместо строчки function calculateExpenses() =
@@ -67,6 +77,7 @@ function addSumBtnHandler() {
   clearInput();
 }
 
+//+
 function render() {
   renderExpenses(expenses);
   renderSum();
@@ -143,6 +154,7 @@ function reviseLimitHandler() {
   }
   moneyLimitNode.innerText = newLimitValue;
   currentLimit = newLimitValue;
+  localStorage.setItem("currentLimit", newLimitValue);
   renderStatus();
 }
 
