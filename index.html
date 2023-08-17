@@ -87,23 +87,26 @@
           <button id="addSumBtn" class="add__sum">Добавить</button>
         </div>
 
-        <div id="revise__limit-popup" class="popup">
+        <div id="reviseLimitPopup" class="popup">
           <form id="popupBox" class="popup-box">
             <h2 class="popup-title">Новый лимит</h2>
             <div class="popup-flex">
-              <div class="popup-input-wrapper tl">
+              <div class="popup-input__wrapper tl">
                 <input
+                  autocomplete="off"
+                  id="popupInput"
+                  class="popup__input"
                   type="number"
-                  class="popup-input js-popup-input"
-                  placeholder="Введите новый лимит"
+                  placeholder="Задайте новый лимит"
+                  min="0"
                 />
               </div>
-              <button class="popup-submit js-popup-submit" type="submit">
+              <button id="popupSubmit" class="popup__submit" type="submit">
                 <p class="popup-submit__text">Задать лимит</p>
               </button>
-              <button id="closePopupBtn" class="close-popup"></button>
             </div>
           </form>
+          <button id="closePopupBtn" class="close__popup"></button>
         </div>
 
         <div class="output-data">
