@@ -195,8 +195,8 @@ dropdown.onclick = function () {
 
 // привязка функций-обработчиков к кнопкам
 addSumBtnNode.addEventListener("click", addSumBtnHandler);
-reviseLimitBtnNode.addEventListener("click", reviseLimitHandler);
-moneyLimitNode.addEventListener("click", reviseLimitHandler);
+//reviseLimitBtnNode.addEventListener("click", reviseLimitHandler);
+//moneyLimitNode.addEventListener("click", reviseLimitHandler);
 clearHistoryBtnNode.addEventListener("click", clearHistoryBtnHandler);
 
 //08.2023//Happy Birthday my son!!!//
