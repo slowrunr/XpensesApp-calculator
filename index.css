@@ -107,7 +107,8 @@ ol li::before,
   content: " \20BD";
 }
 
-button {
+.add__sum,
+.clear__history {
   width: 100%;
   height: 63px;
   color: #fff;

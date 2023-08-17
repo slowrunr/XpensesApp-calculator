@@ -18,10 +18,20 @@ const expensesNode = document.getElementById("expenses");
 const expenseCategoryNode = document.getElementById("categoryInput");
 const sumUpNode = document.getElementById("sumUp");
 const statusNode = document.getElementById("status");
+
 // получаем лимит из этой переменной
 const moneyLimitNode = document.getElementById("moneyLimit");
-// переменные с массивами
 let currentLimit = DEFAULT_LIMIT;
+
+// function getLimitFromStorage() {
+//   const limitFromStorage = parseInt(localStorage.getItem("currentLimit"));
+//   if (!limitFromStorage) {
+//     currentLimit = DEFAULT_LIMIT;
+//   }
+//   moneyLimitNode.innerText = localStorage.getItem("currentLimit");
+// }
+
+// переменные с массивами
 let expenses = [];
 
 // вместо строчки function calculateExpenses() =
@@ -63,8 +73,13 @@ function addSumBtnHandler() {
   console.log(newExpense);
 
   expenses.push(newExpense);
-  renderExpenses(expenses);
+  render();
   clearInput();
+}
+
+//+
+function render() {
+  renderExpenses(expenses);
   renderSum();
   renderStatus();
 }
@@ -139,6 +154,8 @@ function reviseLimitHandler() {
   }
   moneyLimitNode.innerText = newLimitValue;
   currentLimit = newLimitValue;
+  localStorage.setItem("currentLimit", newLimitValue);
+  renderStatus();
 }
 
 //+
@@ -155,8 +172,8 @@ function addStatusRed() {
 
 //+
 function renderStatus() {
-  removeStatusRed();
   const sum = calculateExpenses();
+  removeStatusRed();
   if (sum <= currentLimit) {
     statusNode.innerText = STATUS_IN_LIMIT;
   } else {
@@ -178,8 +195,8 @@ dropdown.onclick = function () {
 
 // привязка функций-обработчиков к кнопкам
 addSumBtnNode.addEventListener("click", addSumBtnHandler);
-reviseLimitBtnNode.addEventListener("click", reviseLimitHandler);
-moneyLimitNode.addEventListener("click", reviseLimitHandler);
+//reviseLimitBtnNode.addEventListener("click", reviseLimitHandler);
+//moneyLimitNode.addEventListener("click", reviseLimitHandler);
 clearHistoryBtnNode.addEventListener("click", clearHistoryBtnHandler);
 
 //08.2023//Happy Birthday my son!!!//
