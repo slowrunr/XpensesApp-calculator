@@ -13,7 +13,6 @@ const expensesInputNode = document.getElementById("expensesInput");
 const inputWrapperNode = document.getElementById("inputWrapper");
 const addSumBtnNode = document.getElementById("addSumBtn");
 const clearHistoryBtnNode = document.getElementById("clearHistoryBtn");
-const reviseLimitBtnNode = document.getElementById("reviseLimitBtn");
 const expensesNode = document.getElementById("expenses");
 const expenseCategoryNode = document.getElementById("categoryInput");
 const sumUpNode = document.getElementById("sumUp");
