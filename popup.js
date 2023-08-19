@@ -1,14 +1,13 @@
 const reviseLimitBtnNode = document.getElementById("reviseLimitBtn");
-const popupNode = document.querySelector(".js-popup");
-const popupFormNode = document.querySelector(".js-popup-form");
-const popupInputNode = document.querySelector(".js-popup-input");
-const popupSubmitNode = document.querySelector(".js-popup-submit");
-const popupCloseNode = document.querySelector(".js-popup-close");
+const popupNode = document.getElementById("popup");
+const popupFormNode = document.getElementById("popupForm");
+const popupInputNode = document.getElementById("newLimitInput");
+const popupSubmitNode = document.getElementById("submitNewLimitBtn");
+const popupCloseNode = document.getElementById("closePopupBtn");
 
 function openPopup() {
-  console.log("proverka");
   popupNode.style.display = "block";
-  popupInputNode.value = currentLimit; // Используем текущий лимит для отображения
+  popupInputNode.value = currentLimit;
 }
 
 function closePopup() {
