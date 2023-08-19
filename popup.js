@@ -1,8 +1,9 @@
-const popupNode = document.getElementById("reviseLimitPopup");
-const popupFormNode = document.getElementById(".popupBox");
-const popupInputNode = document.getElementById(".popupInput");
-const popupSubmitNode = document.getElementById(".popupSubmit");
-const closePopupBtnNode = document.getElementById(".closePopupBtn");
+const reviseLimitBtnNode = document.getElementById("reviseLimitBtn");
+const popupNode = document.getElementById("popup");
+const popupFormNode = document.getElementById("popupForm");
+const popupInputNode = document.getElementById("newLimitInput");
+const popupSubmitNode = document.getElementById("submitNewLimitBtn");
+const popupCloseNode = document.getElementById("closePopupBtn");
 
 function openPopup() {
   popupNode.style.display = "block";
@@ -13,18 +14,18 @@ function closePopup() {
   popupNode.style.display = "none";
 }
 
-function reviseLimit(event) {
+function changeLimit(event) {
   event.preventDefault();
   const newLimit = parseInt(popupInputNode.value);
   if (!isNaN(newLimit)) {
     currentLimit = newLimit; // Обновляем текущий лимит
-    saveLimitToLocalStorage(currentLimit); // Сохраняем новое значение лимита в локальное хранилище
-    moneyLimitNodeimitNode.innerText = currentLimit; // Используем текущий лимит для отображения
+    // saveLimitToLocalStorage(currentLimit); // Сохраняем новое значение лимита в локальное хранилище
+    moneyLimitNode.innerText = currentLimit; // Используем текущий лимит для отображения
     render();
     closePopup();
   }
 }
 
 reviseLimitBtnNode.addEventListener("click", openPopup);
-popupFormNode.addEventListener("submit", reLimit);
+popupFormNode.addEventListener("submit", changeLimit);
 popupCloseNode.addEventListener("click", closePopup);
