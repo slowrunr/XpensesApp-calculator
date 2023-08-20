@@ -92,7 +92,14 @@
             <p>Лимит: <span id="moneyLimit" class="money__limit"></span></p>
             <div id="popup" class="popup">
               <form id="popupForm" class="popup-form">
-                <h2 class="popup-title">Новый лимит</h2>
+                <!-- <p class="popup-current__limit">
+                  Текущий лимит:
+                  <span
+                    id="currentMoneyLimit"
+                    class="money__limit underlined"
+                  ></span>
+                </p> -->
+                <h2 class="popup-new__limit">Новый лимит:</h2>
                 <div class="popup-flex">
                   <div class="popup-input-wrapper">
                     <input
@@ -106,10 +113,10 @@
                   </div>
                   <button
                     id="submitNewLimitBtn"
-                    class="popup-submit"
+                    class="popup-submit__btn"
                     type="submit"
                   >
-                    <p class="popup-submit__text">Задать лимит</p>
+                    <p class="popup-submit__text">Ввести</p>
                   </button>
                   <button id="closePopupBtn" class="popup-close"></button>
                 </div>
