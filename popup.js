@@ -1,6 +1,7 @@
 const reviseLimitBtnNode = document.getElementById("reviseLimitBtn");
 const popupNode = document.getElementById("popup");
 const popupFormNode = document.getElementById("popupForm");
+const popupCurrentLimitNode = document.getElementById("currentMoneyLimit");
 const popupInputNode = document.getElementById("newLimitInput");
 const popupSubmitNode = document.getElementById("submitNewLimitBtn");
 const popupCloseNode = document.getElementById("closePopupBtn");
@@ -9,6 +10,8 @@ function openPopup() {
   popupNode.style.display = "block";
   popupInputNode.value = currentLimit;
 }
+
+//popupCurrentLimitNode.innerText = moneyLimitNode.value + ` ${CURRENCY}`;
 
 function closePopup() {
   popupNode.style.display = "none";
