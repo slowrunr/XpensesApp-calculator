@@ -8,10 +8,8 @@ const popupCloseNode = document.getElementById("closePopupBtn");
 
 function openPopup() {
   popupNode.style.display = "block";
-  popupInputNode.value = currentLimit;
+  popupInputNode.value = "";
 }
-
-//popupCurrentLimitNode.innerText = moneyLimitNode.value + ` ${CURRENCY}`;
 
 function closePopup() {
   popupNode.style.display = "none";
@@ -24,6 +22,7 @@ function changeLimit(event) {
     currentLimit = newLimit; // Обновляем текущий лимит
     // saveLimitToLocalStorage(currentLimit); // Сохраняем новое значение лимита в локальное хранилище
     moneyLimitNode.innerText = currentLimit; // Используем текущий лимит для отображения
+    popupCurrentLimitNode.innerText = currentLimit + ` ${CURRENCY}`;
     render();
     closePopup();
   }
@@ -32,3 +31,5 @@ function changeLimit(event) {
 reviseLimitBtnNode.addEventListener("click", openPopup);
 popupFormNode.addEventListener("submit", changeLimit);
 popupCloseNode.addEventListener("click", closePopup);
+
+popupCurrentLimitNode.innerText = currentLimit + ` ${CURRENCY}`;
