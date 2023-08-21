@@ -33,7 +33,6 @@ let currentLimit = DEFAULT_LIMIT;
 // переменные с массивами
 let expenses = [];
 
-// вместо строчки function calculateExpenses() =
 const calculateExpenses = () => {
   let sum = 0;
   expenses.forEach((expense) => {
@@ -42,7 +41,6 @@ const calculateExpenses = () => {
   return sum;
 };
 
-// далее указываем, что отображается в HTML через JS и объединяем всё в функцию init(App)
 initApp();
 
 //+
@@ -98,15 +96,11 @@ function getExpenseFromUser() {
   }
 
   const expense = parseInt(expensesInputNode.value);
-  // для работы с дробными числами можно заменить parseInt -> parseFloat
   clearInput;
   return expense;
 }
-// 2-й вариант записи этой функции:
-//function(getExpenseFromUser) {
-//  return.parseInt(expensesInputNode.value);}
 
-//?
+//+
 function getCategoryFromUser() {
   return expenseCategoryNode.value;
 }
@@ -116,14 +110,6 @@ function clearInput() {
   expensesInputNode.value = "";
   expenseCategoryNode.value = "";
 }
-
-// другой вариант записи функции с использованием стрелочной функции:
-/* const clearInput() = (input) => {
-  expensesInputNode.value = "";
-}
-или в виде анонимной функции, присвоенной костанте
-const clearInput() = function(input){
-  expensesInputNode.value = "";}*/
 
 //+
 function trackExpense(newExpense) {
@@ -151,7 +137,8 @@ function reviseLimitHandler() {
   if (!newLimitValue) {
     return;
   }
-  moneyLimitNode.innerText = newLimitValue;
+  moneyLimitNode.innerText = newLimitValue + ` ${CURRENCY}`;
+  popupCurrentLimitNode.innerText = newLimitValue + ` ${CURRENCY}`;
   currentLimit = newLimitValue;
   localStorage.setItem("currentLimit", newLimitValue);
   renderStatus();
@@ -195,7 +182,7 @@ dropdown.onclick = function () {
 // привязка функций-обработчиков к кнопкам
 addSumBtnNode.addEventListener("click", addSumBtnHandler);
 //reviseLimitBtnNode.addEventListener("click", reviseLimitHandler);
-//moneyLimitNode.addEventListener("click", reviseLimitHandler);
+moneyLimitNode.addEventListener("click", reviseLimitHandler);
 clearHistoryBtnNode.addEventListener("click", clearHistoryBtnHandler);
 
 //08.2023//Happy Birthday my son!!!//
