@@ -185,3 +185,7 @@ ol li::before {
   object-fit: contain;
   cursor: pointer;
 }
+
+.revise__limit:hover {
+  border: 1px solid rgb(255, 247, 247);
+}
