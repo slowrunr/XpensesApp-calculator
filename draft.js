@@ -1,3 +1,21 @@
+// функция изменения лимита средств в popup-окне - not working
+function changeLimitHandler(event) {
+  event.preventDefault();
+  const newLimit = parseInt(popupInputNode.value);
+  if (!newLimit) {
+    popupInputWrapperNode.classList.add(STATUS_OUT_OF_DATA_CLASSNAME);
+  }
+  popupInputWrapperNode.classList.remove(STATUS_OUT_OF_DATA_CLASSNAME);
+  currentLimit = newLimit;
+  moneyLimitNode.innerText = currentLimit;
+  popupCurrentLimitNode.innerText = currentLimit + ` ${CURRENCY}`;
+
+  localStorage.setItem(LIMIT_FROM_STORAGE, newLimit);
+
+  render();
+  closePopup();
+}
+
 // порядок расположение констант. Сначала основные и не изменяемые (строковые константы - string)
 const DEFAULT_LIMIT = 10000;
 const DEFAULT_SUM = 0;
