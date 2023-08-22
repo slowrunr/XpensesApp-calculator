@@ -21,6 +21,7 @@ const popupCloseNode = document.getElementById("closePopupBtn");
 const popupCurrentLimitNode = document.getElementById("currentMoneyLimit");
 const popupFormNode = document.getElementById("popupForm");
 const popupInputNode = document.getElementById("newLimitInput");
+const popupInputWrapperNode = document.getElementById("popupInputWrapper");
 const popupNode = document.getElementById("popup");
 const popupSubmitNode = document.getElementById("submitNewLimitBtn");
 const reviseLimitBtnNode = document.getElementById("reviseLimitBtn");
@@ -29,7 +30,7 @@ const sumUpNode = document.getElementById("sumUp");
 
 // получаем лимит из этой переменной
 const moneyLimitNode = document.getElementById("moneyLimit");
-let currentLimit = parseInt(moneyLimitNode.innerText);
+let currentLimit = DEFAULT_LIMIT;
 
 //функция загрузки лимита средств из локального хранилища браузера
 function getLimitFromStorage() {
