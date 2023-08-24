@@ -23,10 +23,11 @@ const popupFormNode = document.getElementById("popupForm");
 const popupInputNode = document.getElementById("newLimitInput");
 const popupInputWrapperNode = document.getElementById("popupInputWrapper");
 const popupNode = document.getElementById("popup");
-const popupSubmitNode = document.getElementById("submitNewLimitBtn");
+const setNewLimitBtnNode = document.getElementById("setNewLimitBtn");
 const reviseLimitBtnNode = document.getElementById("reviseLimitBtn");
 const statusNode = document.getElementById("status");
 const sumUpNode = document.getElementById("sumUp");
+const warningNode = document.getElementById("warning");
 
 // получаем лимит из этой переменной
 const moneyLimitNode = document.getElementById("moneyLimit");
@@ -227,10 +228,18 @@ function closePopup() {
 }
 
 // функция изменения лимита средств в popup-окне
-function changeLimit(event) {
-  event.preventDefault();
+function changeLimit() {
+  //if()
+  //warningNode.innerText = "введите значение";
+  //event.preventDefault();
   const newLimit = parseInt(popupInputNode.value);
-  if (!isNaN(newLimit)) {
+  if (!newLimit) {
+    console.log("oops!");
+    popupInputWrapperNode.classList.add(STATUS_OUT_OF_DATA_CLASSNAME);
+    return;
+  } else {
+    popupInputWrapperNode.classList.remove(STATUS_OUT_OF_DATA_CLASSNAME);
+    // if (!isNaN(newLimit)) {
     currentLimit = newLimit; // Обновляем текущий лимит
     // saveLimitToLocalStorage(currentLimit); // Сохраняем новое значение лимита в локальное хранилище
     moneyLimitNode.innerText = currentLimit; // Используем текущий лимит для отображения
@@ -247,7 +256,7 @@ function changeLimit(event) {
 addSumBtnNode.addEventListener("click", addSumBtnHandler);
 clearHistoryBtnNode.addEventListener("click", clearHistoryBtnHandler);
 moneyLimitNode.addEventListener("click", reviseLimitHandler);
-popupFormNode.addEventListener("submit", changeLimit);
+setNewLimitBtnNode.addEventListener("click", changeLimit);
 popupCloseNode.addEventListener("click", closePopup);
 reviseLimitBtnNode.addEventListener("click", openPopup);
 
