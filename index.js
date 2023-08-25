@@ -13,6 +13,7 @@ const STATUS_OUT_OF_DATA_CLASSNAME = "status__border-red";
 // переменные для работы с HTML в алфавитном порядке
 const addSumBtnNode = document.getElementById("addSumBtn");
 const clearHistoryBtnNode = document.getElementById("clearHistoryBtn");
+const dropdownMenuNode = document.getElementById("dropdownMenu");
 const expenseCategoryNode = document.getElementById("categoryInput");
 const expensesInputNode = document.getElementById("expensesInput");
 const expensesNode = document.getElementById("expenses");
@@ -205,15 +206,14 @@ function renderStatus() {
   }
 }
 
-// функция выбора пункта из выпадающего меню
+// функция отображения всех пунктов выпадающего меню
 function show(a) {
-  document.querySelector(".category__input").value = a;
+  document.getElementById("categoryInput").value = a;
 }
 
-let dropdown = document.querySelector(".dropdown");
-
-dropdown.onclick = function () {
-  dropdown.classList.toggle("active");
+// функция вызова выпадающего меню
+dropdownMenuNode.onclick = function () {
+  dropdownMenuNode.classList.toggle("active");
 };
 
 // функция открытия popup-окна
@@ -228,20 +228,15 @@ function closePopup() {
 }
 
 // функция изменения лимита средств в popup-окне
-function changeLimit() {
+function changeLimit(event) {
   //if()
   //warningNode.innerText = "введите значение";
-  //event.preventDefault();
+  event.preventDefault();
   const newLimit = parseInt(popupInputNode.value);
-  if (!newLimit) {
-    console.log("oops!");
-    popupInputWrapperNode.classList.add(STATUS_OUT_OF_DATA_CLASSNAME);
-    return;
-  } else {
-    popupInputWrapperNode.classList.remove(STATUS_OUT_OF_DATA_CLASSNAME);
-    // if (!isNaN(newLimit)) {
+
+  if (!isNaN(newLimit)) {
     currentLimit = newLimit; // Обновляем текущий лимит
-    // saveLimitToLocalStorage(currentLimit); // Сохраняем новое значение лимита в локальное хранилище
+    //saveLimitToLocalStorage(currentLimit); // Сохраняем новое значение лимита в локальное хранилище
     moneyLimitNode.innerText = currentLimit; // Используем текущий лимит для отображения
     popupCurrentLimitNode.innerText = currentLimit + ` ${CURRENCY}`;
 
