@@ -13,6 +13,7 @@ const STATUS_OUT_OF_DATA_CLASSNAME = "status__border-red";
 // переменные для работы с HTML в алфавитном порядке
 const addSumBtnNode = document.getElementById("addSumBtn");
 const clearHistoryBtnNode = document.getElementById("clearHistoryBtn");
+const dropdownMenuNode = document.getElementById("dropdownMenu");
 const expenseCategoryNode = document.getElementById("categoryInput");
 const expensesInputNode = document.getElementById("expensesInput");
 const expensesNode = document.getElementById("expenses");
@@ -23,10 +24,11 @@ const popupFormNode = document.getElementById("popupForm");
 const popupInputNode = document.getElementById("newLimitInput");
 const popupInputWrapperNode = document.getElementById("popupInputWrapper");
 const popupNode = document.getElementById("popup");
-const popupSubmitNode = document.getElementById("submitNewLimitBtn");
+const setNewLimitBtnNode = document.getElementById("setNewLimitBtn");
 const reviseLimitBtnNode = document.getElementById("reviseLimitBtn");
 const statusNode = document.getElementById("status");
 const sumUpNode = document.getElementById("sumUp");
+const warningNode = document.getElementById("warning");
 
 // получаем лимит из этой переменной
 const moneyLimitNode = document.getElementById("moneyLimit");
@@ -204,15 +206,14 @@ function renderStatus() {
   }
 }
 
-// функция выбора пункта из выпадающего меню
+// функция отображения всех пунктов выпадающего меню
 function show(a) {
-  document.querySelector(".category__input").value = a;
+  document.getElementById("categoryInput").value = a;
 }
 
-let dropdown = document.querySelector(".dropdown");
-
-dropdown.onclick = function () {
-  dropdown.classList.toggle("active");
+// функция вызова выпадающего меню
+dropdownMenuNode.onclick = function () {
+  dropdownMenuNode.classList.toggle("active");
 };
 
 // функция открытия popup-окна
@@ -228,11 +229,14 @@ function closePopup() {
 
 // функция изменения лимита средств в popup-окне
 function changeLimit(event) {
+  //if()
+  //warningNode.innerText = "введите значение";
   event.preventDefault();
   const newLimit = parseInt(popupInputNode.value);
+
   if (!isNaN(newLimit)) {
     currentLimit = newLimit; // Обновляем текущий лимит
-    // saveLimitToLocalStorage(currentLimit); // Сохраняем новое значение лимита в локальное хранилище
+    //saveLimitToLocalStorage(currentLimit); // Сохраняем новое значение лимита в локальное хранилище
     moneyLimitNode.innerText = currentLimit; // Используем текущий лимит для отображения
     popupCurrentLimitNode.innerText = currentLimit + ` ${CURRENCY}`;
 
@@ -247,7 +251,7 @@ function changeLimit(event) {
 addSumBtnNode.addEventListener("click", addSumBtnHandler);
 clearHistoryBtnNode.addEventListener("click", clearHistoryBtnHandler);
 moneyLimitNode.addEventListener("click", reviseLimitHandler);
-popupFormNode.addEventListener("submit", changeLimit);
+setNewLimitBtnNode.addEventListener("click", changeLimit);
 popupCloseNode.addEventListener("click", closePopup);
 reviseLimitBtnNode.addEventListener("click", openPopup);
 

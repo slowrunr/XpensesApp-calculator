@@ -97,6 +97,12 @@
 }
 
 .set-new-limit__btn {
+  margin-bottom: unset !important;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 54px;
+  text-align: center;
+  color: #ffffff;
   width: 80%;
   display: inline-block;
   border: unset;
@@ -107,12 +113,4 @@
 
 .set-new-limit__btn:hover {
   box-shadow: 0 5px 0 0 rgba(0, 0, 0, 0.2);
-}
-
-.popup-submit__text {
-  margin-bottom: unset !important;
-  font-weight: 400;
-  line-height: 54px;
-  text-align: center;
-  color: #ffffff;
 }
