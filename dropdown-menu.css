@@ -42,7 +42,7 @@
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
-.dropdown .option {
+.dropdown .categories {
   position: absolute;
   top: 58px;
   left: -1px;
@@ -55,13 +55,13 @@
   outline: none;
 }
 
-.dropdown.active .option {
+.dropdown.active .categories {
   padding: 10px 22px;
   display: block;
   cursor: pointer;
 }
 
-.option__item:hover {
+.category:hover {
   background: #62baea;
   color: #fff;
 }

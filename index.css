@@ -78,7 +78,7 @@ p {
   background: #fff;
   border-radius: 10px;
 }
-.option,
+.categories,
 .expense,
 .category__input,
 .expenses__input,
@@ -88,7 +88,7 @@ p {
 .show__currency::after,
 .money__limit,
 ol li::before,
-.option__item,
+.category,
 .sum__up,
 .status {
   font-weight: 400;

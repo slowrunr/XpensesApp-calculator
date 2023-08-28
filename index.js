@@ -207,7 +207,7 @@ function renderStatus() {
 }
 
 // функция отображения всех пунктов выпадающего меню
-function show(a) {
+function showCategory(a) {
   document.getElementById("categoryInput").value = a;
 }
 
@@ -235,6 +235,8 @@ function changeLimit(event) {
   const newLimit = parseInt(popupInputNode.value);
 
   if (!isNaN(newLimit)) {
+    console.log("Задайте новый лимит");
+    popupInputWrapperNode.classList.add(STATUS_OUT_OF_DATA_CLASSNAME);
     currentLimit = newLimit; // Обновляем текущий лимит
     //saveLimitToLocalStorage(currentLimit); // Сохраняем новое значение лимита в локальное хранилище
     moneyLimitNode.innerText = currentLimit; // Используем текущий лимит для отображения
